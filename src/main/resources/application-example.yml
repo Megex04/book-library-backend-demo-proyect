@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: book-library
+
+  # Configuración de Base de Datos
+  datasource:
+    url: jdbc:postgresql://localhost:5432/biblioteca_db
+    username: postgres
+    password: TU_PASSWORD_AQUI
+    driver-class-name: org.postgresql.Driver
+
+  # Configuración de JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true # Muestra las consultas SQL en la consola (útil para debug)
+    properties:
+      hibernate:
+        format_sql: true # Formatea el SQL para que sea legible
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.gmail.com # O sandbox.smtp.mailtrap.io
+    port: 587
+    username: TU_USUARIO_EMAIL
+    password: TU_PASSWORD_EMAIL
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  # Configuración básica de JWT
+  security:
+    jwt:
+      secret-key: PON_AQUI_TU_CLAVE_BASE64_DE_256_BITS # Clave larga y segura (Hex o Base64)
+      expiration-time: 3600000 # 1 hora en milisegundos
+
+# Configuración de Logs
+logging:
+  level:
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE # Para ver los valores de los ? en las queries
