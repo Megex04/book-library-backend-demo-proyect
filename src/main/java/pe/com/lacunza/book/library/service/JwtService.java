@@ -43,7 +43,18 @@ public class JwtService {
      * Genera un token para un usuario sin claims extra
      */
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        Map<String, Object> extraClaims = new HashMap<>();
+
+        // Extraemos el primer rol que tenga el usuario (ej: "ADMIN" o "MEMBER")
+        String role = userDetails.getAuthorities().stream()
+                .findFirst()
+                .map(authority -> authority.getAuthority())
+                .orElse("MEMBER"); // Valor por defecto si no tiene roles
+
+        // Lo agregamos al payload del token
+        extraClaims.put("role", role);
+
+        return generateToken(extraClaims, userDetails);
     }
 
     /**

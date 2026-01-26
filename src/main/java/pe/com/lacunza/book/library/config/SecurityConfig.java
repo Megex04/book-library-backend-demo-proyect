@@ -52,6 +52,7 @@ public class SecurityConfig {
                         // Rutas protegidas por Rol
                         // Nota: Spring Security añade el prefijo "ROLE_" automáticamente si usas hasRole
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/librarian/**").hasAnyRole("LIBRARIAN", "ADMIN")
 
                         // Cualquier otra ruta requiere estar autenticado
