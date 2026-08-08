@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualización de Roles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #4285f4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        .roles {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Actualización de Roles</h1>
+    </div>
+    <div class="content">
+        <p>Estimado/a usuario/a,</p>
+        
+        <p>Le informamos que los roles de su cuenta en el Sistema de Biblioteca han sido actualizados el <strong th:text="${changeDate}">01/01/2023 12:00</strong>.</p>
+        
+        <p>Sus roles actuales son:</p>
+        
+        <div class="roles" th:text="${roles}">MEMBER, LIBRARIAN</div>
+        
+        <p>Esta actualización puede afectar a los permisos y funcionalidades a los que tiene acceso en el sistema.</p>
+        
+        <p>Si tiene alguna pregunta o necesita ayuda, no dude en contactar con el administrador del sistema.</p>
+        
+        <p>Saludos cordiales,<br>
+        El equipo de la Biblioteca</p>
+    </div>
+    <div class="footer">
+        <p>Este es un mensaje automático, por favor no responda a este correo.</p>
+    </div>
+</body>
+</html>

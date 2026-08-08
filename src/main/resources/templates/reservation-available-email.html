@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro Disponible</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Libro Disponible para Retirar</h1>
+    </div>
+    <div class="content">
+        <p>Estimado/a usuario/a,</p>
+
+        <p>El libro que reservó, <strong th:text="${bookTitle}">Título del libro</strong>, ya está disponible para que lo retire.</p>
+
+        <p>Tiene <strong th:text="${hoursToPickup}">48</strong> horas para pasar a recogerlo, antes del <strong th:text="${expiryDate}">01/01/2023 12:00</strong>. Pasado ese plazo, la reserva será cancelada.</p>
+
+        <p>Saludos cordiales,<br>
+        El equipo de la Biblioteca</p>
+    </div>
+    <div class="footer">
+        <p>Este es un mensaje automático, por favor no responda a este correo.</p>
+    </div>
+</body>
+</html>
