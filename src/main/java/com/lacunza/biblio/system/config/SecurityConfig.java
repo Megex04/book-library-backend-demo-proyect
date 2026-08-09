@@ -49,7 +49,7 @@ public class SecurityConfig {
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers("/swagger-resources/**").permitAll()
                         .requestMatchers("/webjars/**").permitAll()
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/admin/**").authenticated()
                         .requestMatchers("/api/librarian/**").hasAnyRole("ADMIN", "LIBRARIAN")
                         .requestMatchers("/api/member/**").hasAnyRole("ADMIN", "LIBRARIAN", "MEMBER")
                         .anyRequest().authenticated()

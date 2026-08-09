@@ -19,7 +19,10 @@ public class BookCreateRequest {
     @Size(max = 255, message = "El título no puede exceder los 255 caracteres")
     private String title;
     
-    @Pattern(regexp = "^(?:ISBN(?:-13)?:?\\s)?(?=[0-9]{13}$|(?=(?:[0-9]+[-\\s]){4})[-\\s0-9]{17}$)97[89][-\\s]?[0-9]{1,5}[-\\s]?[0-9]+[-\\s]?[0-9]+[-\\s]?[0-9]$",
+    // Ver comentario equivalente en BookUpdateRequest.java: la regex anterior
+    // exigía exactamente 4 separadores intermedios y rechazaba ISBNs válidos
+    // como 978-8408175774.
+    @Pattern(regexp = "^(?:ISBN(?:-13)?:?\\s)?97[89][-\\s]?[0-9]{1,5}[-\\s]?[0-9]{1,7}[-\\s]?[0-9]{1,7}[-\\s]?[0-9]$",
              message = "Formato de ISBN inválido")
     private String isbn;
     

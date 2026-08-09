@@ -19,7 +19,13 @@ public class BookUpdateRequest {
     @Size(max = 255, message = "El título no puede exceder los 255 caracteres")
     private String title;
     
-    @Pattern(regexp = "^(?:ISBN(?:-13)?:?\\s)?(?=[0-9]{13}$|(?=(?:[0-9]+[-\\s]){4})[-\\s0-9]{17}$)97[89][-\\s]?[0-9]{1,5}[-\\s]?[0-9]+[-\\s]?[0-9]+[-\\s]?[0-9]$",
+    // Acepta ISBN-13 (empieza en 978/979) con o sin separadores (guion o
+    // espacio), sin exigir una cantidad fija de grupos. La regex anterior
+    // exigía exactamente 4 separadores intermedios (formato tipo
+    // 978-3-16-148410-0), por lo que rechazaba ISBNs igualmente válidos como
+    // 978-8408175774 (un solo guion tras el prefijo) o el mismo número sin
+    // ningún separador.
+    @Pattern(regexp = "^(?:ISBN(?:-13)?:?\\s)?97[89][-\\s]?[0-9]{1,5}[-\\s]?[0-9]{1,7}[-\\s]?[0-9]{1,7}[-\\s]?[0-9]$",
              message = "Formato de ISBN inválido")
     private String isbn;
     

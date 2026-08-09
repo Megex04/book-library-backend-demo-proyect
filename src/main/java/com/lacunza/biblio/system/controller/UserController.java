@@ -47,7 +47,7 @@ public class UserController {
     /**
      * Cambiar la contraseña del usuario autenticado
      */
-    @PutMapping("/users/password")
+    @PutMapping("/users/change-password")
     public ResponseEntity<Void> changeCurrentUserPassword(
             @Valid @RequestBody PasswordChangeRequest request,
             @AuthenticationPrincipal User currentUser) {
