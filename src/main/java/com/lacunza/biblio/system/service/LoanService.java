@@ -436,6 +436,9 @@ public class LoanService {
             if (daysRemaining < 0) {
                 response.setDaysOverdue(Math.abs((int) daysRemaining));
                 response.setOverdue(true);
+                // En BD el préstamo sigue ACTIVE hasta que se devuelve (ahí se genera la multa);
+                // hacia el cliente se informa como OVERDUE para que se muestre "Vencido".
+                response.setStatus(LoanStatus.OVERDUE.name());
             } else {
                 response.setDaysRemaining((int) daysRemaining);
                 response.setOverdue(false);
